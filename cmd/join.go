@@ -135,6 +135,7 @@ func membership() phase {
 			var localMember *etcdserverpb.Member
 			var members []*etcdserverpb.Member
 			log.Println("[membership] Checking if this member was added")
+			log.Printf("[membership] Generating etcd client with endpoints %s", in.etcdAdmConfig.Endpoint)
 			client, err := etcd.ClientForEndpoint(in.etcdAdmConfig.Endpoint, in.etcdAdmConfig)
 			if err != nil {
 				return fmt.Errorf("error checking membership: %v", err)

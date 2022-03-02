@@ -42,7 +42,7 @@ func ClientForEndpoint(endpoint string, cfg *apis.EtcdAdmConfig) (*clientv3.Clie
 	}
 
 	cli, err := clientv3.New(clientv3.Config{
-		Endpoints:   []string{endpoint},
+		Endpoints:   strings.Split(endpoint, ","),
 		DialTimeout: 5 * time.Second,
 		TLS:         tlsConfig,
 	})
